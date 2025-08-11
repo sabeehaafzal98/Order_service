@@ -1,7 +1,9 @@
 package com.example.order_service;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.List;
 
@@ -17,17 +19,19 @@ public class OrderController {
         this.restaurantClient = restaurantClient;
     }
 
+
+    @CircuitBreaker(name = "restaurantCB", fallbackMethod = "fallbackPlaceOrder")
     @PostMapping("/placeOrder")
     public Order placeOrder(@RequestBody Map<String,String> payload){
             String restaurantName = payload.get("restaurantName");
-        List<Map<String,Object>> restaurants = restaurantClient.getAllRestaurants();
-        Map<String,Object> selectedRestaurant = restaurants.stream().filter(
-                r->r.get("name").toString().equalsIgnoreCase(restaurantName)
+        List<Restaurant> restaurants = restaurantClient.getAllRestaurants();
+        Restaurant selectedRestaurant = restaurants.stream().filter(
+                r->r.getName().equalsIgnoreCase(restaurantName)
         ).findFirst().orElseThrow(()->new RuntimeException("Restaurant not found"));
 
    Order order=new Order();
-   order.setRestaurantName(selectedRestaurant.get("name").toString());
-   order.setCuisine(selectedRestaurant.get("cuisine").toString());
+   order.setRestaurantName(selectedRestaurant.getName());
+   order.setCuisine(selectedRestaurant.getCuisine());
    order.setStatus("Placed");
    return orderRepository.save(order);
     }
@@ -36,6 +40,16 @@ public class OrderController {
     public List<Order> getAllOrder(){
         return orderRepository.findAll();
     }
+
+    public Order fallbackPlaceOrder(Map<String,String> payload, Throwable t) {
+        System.out.println("Fallback triggered due to: " + t.getMessage());
+        Order order = new Order();
+        order.setRestaurantName("Fallback Restaurant");
+        order.setCuisine("Unavailable");
+        order.setStatus("Pending");
+        return order;
+    }
+
 
 }
 

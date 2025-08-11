@@ -2,6 +2,7 @@ package com.example.order_service;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 import java.util.Map;
@@ -10,5 +11,6 @@ import java.util.Map;
 public interface RestaurantClient {
 
     @GetMapping("/restaurants/getRestaurant")
-    List<Map<String,Object>> getAllRestaurants();
+    List<Restaurant> getAllRestaurants();
+
 }
