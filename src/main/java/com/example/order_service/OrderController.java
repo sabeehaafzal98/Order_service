@@ -1,6 +1,7 @@
 package com.example.order_service;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -19,8 +20,7 @@ public class OrderController {
         this.restaurantClient = restaurantClient;
     }
 
-
-    @CircuitBreaker(name = "restaurantCB", fallbackMethod = "fallbackPlaceOrder")
+    @Retry(name="restaurantServiceRetry",fallbackMethod = "fallbackPlaceOrder")
     @PostMapping("/placeOrder")
     public Order placeOrder(@RequestBody Map<String,String> payload){
             String restaurantName = payload.get("restaurantName");

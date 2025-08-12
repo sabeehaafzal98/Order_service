@@ -10,3 +10,16 @@ There are two main types of fallbacks in this context:
 Static fallback classes (used with Hystrix): Implement the Feign interface and return default responses.
 Dynamic fallback methods (used with Resilience4j): Defined alongside the business logic and triggered based on runtime exceptions or circuit breaker states.
 Today, Resilience4j is the recommended approach for building resilient microservices in Spring Boot, offering better integration with reactive programming, metrics, and fine-grained control over failure handling.
+
+
+
+
+
+
+Date: 12-08-2025--->check commits:-
+
+
+have added retry mechanism to microservices application, also can check the metrics via the postman-url. 
+have added prometheus dependency to check :- 
+We can check the urls like this :-
+http://localhost:{port_no}/actuator/prometheus

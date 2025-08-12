@@ -68,10 +68,26 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!--dependencies for fallback as Resilience4j -->
+		<!--dependencies for fallback using Resilience4j -->
 		<dependency>
 			<groupId>io.github.resilience4j</groupId>
 			<artifactId>resilience4j-spring-boot2</artifactId>
+		</dependency>
+
+		<!--Dependencies for retries using Resilienc4j -->
+		<dependency>
+			<groupId>io.github.resilience4j</groupId>
+			<artifactId>resilience4j-retry</artifactId>
+		</dependency>
+
+		<!-- Adding Micrometer+Prometheus dependency-->
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.github.resilience4j</groupId>
+			<artifactId>resilience4j-micrometer</artifactId>
 		</dependency>
 
 

@@ -1,0 +1,409 @@
+{
+	"info": {
+		"_postman_id": "29eeca96-38e2-4215-a3e2-fea8d998ca70",
+		"name": "Microservice-example",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47275698",
+		"_collection_link": "https://sabeeha-afzal-8584084.postman.co/workspace/Sabeeha-afzal's-Workspace~2d0b7a01-a367-4a0c-8fa4-94e21c024aa4/collection/47275698-29eeca96-38e2-4215-a3e2-fea8d998ca70?action=share&source=collection_link&creator=47275698"
+	},
+	"item": [
+		{
+			"name": "Restaurant-get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/restaurants/getRestaurant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"restaurants",
+						"getRestaurant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Restaurant-post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/restaurants/addNewRestaurant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"restaurants",
+						"addNewRestaurant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Orders-post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/orders/placeOrder?restaurantName=Tandoori Treat",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"orders",
+						"placeOrder"
+					],
+					"query": [
+						{
+							"key": "restaurantName",
+							"value": "Tandoori Treat"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Orders-get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/orders/getAllOrders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"orders",
+						"getAllOrders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ApiGateway-addRest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Tandoori Treat\",\r\n    \"cuisine\": \"Indian\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/restaurants/addNewRestaurant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"restaurants",
+						"addNewRestaurant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ApiGateway-getAllRest",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/restaurants/getRestaurant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"restaurants",
+						"getRestaurant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ApiGateway-getAllOrders",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/orders/getAllOrders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"orders",
+						"getAllOrders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ApiGateway-PostOrder",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"restaurantName\":\"HOT WOK\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/orders/placeOrder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"orders",
+						"placeOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ApiGateway-metricsCheck resilience4j.circuitbreaker.calls",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/actuator/metrics/resilience4j.circuitbreaker.calls?tag=name:restaurantCB&tag=kind:failed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"actuator",
+						"metrics",
+						"resilience4j.circuitbreaker.calls"
+					],
+					"query": [
+						{
+							"key": "tag",
+							"value": "name:restaurantCB"
+						},
+						{
+							"key": "tag",
+							"value": "kind:failed"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order-service-metricsCheck resilience4j.retry.calls Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/actuator/metrics/resilience4j.circuitbreaker.calls?tag=name:restaurantCB&tag=kind:failed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"actuator",
+						"metrics",
+						"resilience4j.circuitbreaker.calls"
+					],
+					"query": [
+						{
+							"key": "tag",
+							"value": "name:restaurantCB"
+						},
+						{
+							"key": "tag",
+							"value": "kind:failed"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ApiGateway-metricsCheck resilience4j.retry.calls Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/actuator/metrics/resilience4j.retry.calls?tag=name:myRetry&tag=kind:failed_with_retry",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"actuator",
+						"metrics",
+						"resilience4j.retry.calls"
+					],
+					"query": [
+						{
+							"key": "tag",
+							"value": "name:myRetry"
+						},
+						{
+							"key": "tag",
+							"value": "kind:failed_with_retry"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
